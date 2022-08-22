@@ -265,7 +265,7 @@ route.patch("/assign/:assetId", Auth, isAdmin, async (req, res) => {
     }
 });
 
-route.get("/view-assigned-assets/:userId", Auth, async (req, res) => {
+route.get("/view-assigned-assets/:userId", Auth,isAdmin, async (req, res) => {
 
     resp = {};
     try {
