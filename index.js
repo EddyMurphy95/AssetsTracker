@@ -27,6 +27,6 @@ app.use("/api/user",authRoutes);
 app.use("/api",assetroute);
 
 //start server
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server Up And Running on port "+process.env.PORT);
 });
