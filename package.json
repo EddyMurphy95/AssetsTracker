@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nana Owusu Oduro",
   "license": "ISC",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
@@ -23,5 +23,6 @@
   "devDependencies": {
     "@types/node": "^18.6.5",
     "nodemon": "^2.0.19"
+    
   }
 }
