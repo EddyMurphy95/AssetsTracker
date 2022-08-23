@@ -57,11 +57,10 @@ route.delete("/delete/:assetId",Auth, isAdmin, async (req, res) => {
       resp["status"] = "06";
       resp["message"] = "Asset Not Found ! It might Probably be Deleted";
 
-      return res.send(resp);
+      return res.status(200).send(resp);
     }
     
-     //check if asset has been deleted 
-    
+    //check if asset has been assigned a user
         if(asset.user)
         {
             const userObject = await User.findById(asset.user); 
@@ -74,22 +73,16 @@ route.delete("/delete/:assetId",Auth, isAdmin, async (req, res) => {
                    return el;
                }
            })
-           
-            //  console.log("Before :",userObject);
-            //  userObject.assets = newAssetArray;
-            //   console.log("After ::",newAssetArray);
-
-             
+   
              const updatedUser= await User.updateOne({_id:userObject._id},
             {$set: {assets:newAssetArray}})
            
             //comparing asset id with the one from client side
             const deleteAsset = await Assets.deleteOne({ _id: req.params.assetId });
         
-       
     resp["status"] = "01";
     resp["message"] = "Assigned Asset Successfully Deleted";   
-    return res.send(resp);
+    return res.status(200).send(resp);
      }
 
      else
@@ -97,7 +90,7 @@ route.delete("/delete/:assetId",Auth, isAdmin, async (req, res) => {
         const deleteAsset = await Assets.deleteOne({ _id: req.params.assetId });
         resp["status"] = "01";
         resp["message"] = "Unassigned Asset Successfully Deleted";   
-        return res.send(resp);
+        return res.status(200).send(resp);
 
      }
 
@@ -106,7 +99,7 @@ route.delete("/delete/:assetId",Auth, isAdmin, async (req, res) => {
     resp["message"] = `Asset Couldn't Be Deleted`;
     resp["error"] = error;
     console.log("Error",error);
-    return res.send(resp);
+    return res.status(400).send(resp);
   }
 });
 
@@ -292,7 +285,6 @@ route.get("/view-assigned-assets/:userId", Auth,isAdmin, async (req, res) => {
     //   return res.json(resp);
     }
   });
-
 route.post("/requestAsset",Auth,async(req,res)=>{
     resp={}
 
