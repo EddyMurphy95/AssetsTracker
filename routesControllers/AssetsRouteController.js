@@ -77,8 +77,8 @@ route.delete("/delete/:assetId",Auth, isAdmin, async (req, res) => {
              const updatedUser= await User.updateOne({_id:userObject._id},
             {$set: {assets:newAssetArray}})
            
-            //comparing asset id with the one from client side
-            const deleteAsset = await Assets.deleteOne({ _id: req.params.assetId });
+            // //comparing asset id with the one from client side
+            // const deleteAsset = await Assets.deleteOne({ _id: req.params.assetId });
         
     resp["status"] = "01";
     resp["message"] = "Assigned Asset Successfully Deleted";   
