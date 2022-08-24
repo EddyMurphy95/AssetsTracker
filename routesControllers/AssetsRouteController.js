@@ -112,7 +112,7 @@ route.get("/assets", Auth, isAdmin, async (req, res) => {
   if(check.length === 0)
   {
     resp['status'] = '06';
-    resp['message'] = "Your asset collection is empty";
+    resp['message'] = "Your asset collection is empty. Kindly create an asset";
     return res.status(400).send(resp);
 
   }
@@ -230,7 +230,7 @@ route.get("/users", Auth, isAdmin, async (req, res) => {
   if(check.length === 0)
   {
     resp['status'] = '06';
-    resp['message'] = "Your user collection is empty";
+    resp['message'] = "Your user collection is empty. Kindly signup an account";
     return res.status(400).send(resp);
 
   }
