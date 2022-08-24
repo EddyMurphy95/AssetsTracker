@@ -216,6 +216,15 @@ route.get("/getStats", Auth, isAdmin, async (req, res) => {
 route.get("/users", Auth, isAdmin, async (req, res) => {
   resp = {};
   try {
+    //check if there are users in the account
+  const check = await User.find();
+  if(check.length === 0)
+  {
+    resp['status'] = '06';
+    resp['message'] = "Your Database is empty";
+    return res.status(400).send(resp);
+
+  }
 
     const getUser = await User.find().select("-password"); //the select helps remove password
     resp["status"] = "01";
