@@ -221,7 +221,7 @@ route.get("/users", Auth, isAdmin, async (req, res) => {
   if(check.length === 0)
   {
     resp['status'] = '06';
-    resp['message'] = "Your Database is empty";
+    resp['message'] = "Your user collection is empty";
     return res.status(400).send(resp);
 
   }
