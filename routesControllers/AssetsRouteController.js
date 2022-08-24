@@ -113,7 +113,7 @@ route.get("/assets", Auth, isAdmin, async (req, res) => {
   {
     resp['status'] = '06';
     resp['message'] = "Your asset collection is empty. Kindly create an asset";
-    return res.status(400).send(resp);
+    return res.status(404).send(resp);
 
   }
     const readall = await Assets.find();
@@ -231,7 +231,7 @@ route.get("/users", Auth, isAdmin, async (req, res) => {
   {
     resp['status'] = '06';
     resp['message'] = "Your user collection is empty. Kindly signup an account";
-    return res.status(400).send(resp);
+    return res.status(404).send(resp);
 
   }
 
