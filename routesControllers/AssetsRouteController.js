@@ -107,6 +107,15 @@ route.delete("/delete/:assetId",Auth, isAdmin, async (req, res) => {
 route.get("/assets", Auth, isAdmin, async (req, res) => {
   resp = {};
   try {
+       //check if there are users in the account
+  const check = await Assets.find();
+  if(check.length === 0)
+  {
+    resp['status'] = '06';
+    resp['message'] = "Your asset collection is empty";
+    return res.status(400).send(resp);
+
+  }
     const readall = await Assets.find();
     resp["status"] = "01";
     resp["message"] = "Assets Successfully Retrieved";
