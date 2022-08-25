@@ -261,7 +261,7 @@ route.get("/view-assigned-assets/:userId", Auth, isUser, async (req, res) => {
   resp = {};
   try {
 
-    
+
     const readAssigned = await User.findById(req.params.userId);
     resp["status"] = "01";
     resp["message"] = "Assigned Assets Successfully Retrieved";
@@ -309,9 +309,8 @@ route.post("/requestAsset", Auth, async (req, res) => {
 //message issue
 route.post("/assetIssue", Auth,isUser,async (req, res) => {
   resp = {};
-  //we first get the id for the asset the issue is about
-  //we get the id of the user sending the issue
-  // console.log(req.user);
+  
+  
   if (!req.body.userId || !req.body.assetId || !req.body.message) {
     resp["status"] = "06";
     resp["error"] = `${!req.body.userId && "userId"} ${
