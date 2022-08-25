@@ -33,3 +33,10 @@ exports.isAdmin = (req,res,next)=>{
          }
          next();
 }
+exports.isUser = (req,res,next)=>{
+    if(req.user.role==="Admin")
+    {
+       return res.status(401).send("Access Denied! You must be a user to submit an issue.");
+    }
+    next();
+}
